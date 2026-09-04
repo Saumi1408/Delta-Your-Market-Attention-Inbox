@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:delta;MODE=PostgreSQL;DB_CLOSE_DELAY=-1}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+  jpa:
+    open-in-view: false
+  flyway:
+    enabled: false
+delta:
+  cors-origin: ${CORS_ORIGIN:http://localhost:3000}
+  freshness:
+    live-seconds: 60
+    stale-seconds: 300

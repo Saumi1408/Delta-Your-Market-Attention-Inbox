@@ -1,0 +1,3 @@
+# DELTA
+
+Most watchlists show what the market is doing. Delta shows what changed since **you** last looked. It keeps a separate knowledge checkpoint for every stock, compares current movement with that stock’s normal behaviour and benchmark, and surfaces only the few changes worth attention. Every score is deterministic and explained in plain language—price shock, unusual volume, relative movement, or breakout—while quiet stocks stay reassuringly out of the way. Freshness, stale feeds, and provider conflicts are visible rather than hidden. Delta gives returning investors a responsible, reliable 30-second catch-up without predictions, recommendations, or market noise.
