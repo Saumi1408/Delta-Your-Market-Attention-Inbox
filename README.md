@@ -68,16 +68,18 @@ Or start PostgreSQL and Redis with `docker compose up -d`. The backend defaults 
 
 ## Demo
 
-1. Open Attention: two instruments need attention and quiet stocks are collapsed.
-2. Open Tata Motors and inspect its deterministic change story and timeline.
-3. Select **Mark seen**; only Tata Motors’ checkpoint resets.
-4. Select **Stale provider** or **Conflicting providers** in the demo control.
-5. Open **Data status** to see degraded state made explicit.
+1. Open Delta directly as the persistent demo investor; no login step interrupts the core flow.
+2. Open Attention: two instruments need attention and quiet stocks are collapsed.
+3. Open Tata Motors and inspect its deterministic change story, compact chart, and timeline.
+4. Select **Mark seen**; only Tata Motors’ persisted checkpoint resets.
+5. Use Watchlists to create, rename, delete, or remove instruments; use Explore to search and add stocks.
+6. Select **Stale provider** or **Conflicting providers** in the demo control.
+7. Open **Data status** to see degraded state made explicit.
 
 ## Tests
 
 `npm run build` validates the frontend. `cd backend && mvn test` covers scoring, classification, independent checkpoints, and out-of-order quote rejection. See [edge cases](docs/EDGE_CASES.md), [trade-offs](docs/TRADEOFFS.md), [scaling](docs/SCALING.md), and [evaluator Q&A](docs/EVALUATOR_QA.md).
 
-## Known limitations
+## Implementation status and limitations
 
-The hackathon slice uses a deterministic in-memory mock and demo user; database repositories, production provider credentials, complete NSE holiday rules, corporate-action adjustment, and distributed rate limiting are the next production steps. Simulated prices are never represented as exchange-live.
+The single-user demo, watchlists, items, and per-instrument checkpoints persist in file-backed H2 by default and can use PostgreSQL through `DATABASE_URL`. Market quotes remain global deterministic simulated data behind `MarketDataProvider`; production provider credentials, complete NSE holiday rules, corporate-action adjustment, and distributed rate limiting are future work. Failure scenarios preserve explicit quality status and the last verified value. Simulated prices are never represented as exchange-live. Explore summaries are deterministic verified text; the optional LLM rephrasing path is intentionally not enabled.
