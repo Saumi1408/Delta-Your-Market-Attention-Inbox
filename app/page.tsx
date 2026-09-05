@@ -164,7 +164,9 @@ const initial: Stock[] = [
 ];
 
 const qclass = (q: Quality) => `quality ${q.toLowerCase()}`;
-const API = 'http://localhost:8080/api';
+const API =
+  import.meta.env.VITE_API_URL?.replace(/\/$/, '') ??
+  'http://localhost:8080/api';
 function Score({ value }: { value: number }) {
   const color = value >= 60 ? '#db4b38' : value >= 30 ? '#ad6d00' : '#1b7b5a';
   return (

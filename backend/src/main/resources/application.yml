@@ -9,6 +9,8 @@ spring:
       ddl-auto: update
   flyway:
     enabled: false
+server:
+  port: ${PORT:8080}
 delta:
   cors-origin: ${CORS_ORIGIN:http://localhost:3000}
   freshness:
